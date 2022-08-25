@@ -10,7 +10,6 @@ const FooterContainer = styled.footer`
 	color: black;
 	margin-top: 50px;
 	min-width: 660px;
-	position: absolute;
 	bottom: 0;
 	width: 100%;
 
