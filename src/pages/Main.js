@@ -20,7 +20,7 @@ function Main() {
     };
     getData();
   }, []);
-  console.log(dbData);
+
   return (
     <div>
       <BackgroundContainer>
