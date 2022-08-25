@@ -99,7 +99,7 @@ const Header = ({ isLoggedIn }) => {
             </StyledLink>
           </li>
           <li className='navlist'>
-            <StyledLink to='/'>
+            <StyledLink to='/faq'>
               <div>FAQ</div>
             </StyledLink>
           </li>

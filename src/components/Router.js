@@ -4,6 +4,7 @@ import Detail from '../pages/Detail';
 import Auth from '../routes/Auth';
 import Header from './Header';
 import PostItem from './PostItem';
+import Faq from '../pages/Faq';
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path='/' element={<Main />} />
             <Route path='/detail' element={<Detail />} />
             <Route path='/post' element={<PostItem />} />
+            <Route path='/faq' element={<Faq />} />
           </>
         ) : (
           <Route path='/' element={<Auth />} />
