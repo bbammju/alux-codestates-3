@@ -55,6 +55,8 @@ const HeaderContainer = styled.div`
 			}
 		}
 	}
+	.navbar_logo {
+	}
 	.navbar_logo img {
 		width: 250px;
 		height: 100px;
@@ -83,7 +85,7 @@ const Header = () => {
 			<nav className="navbar">
 				<div className="navbar_logo">
 					<Link to="/">
-						<img src={Logo} st />
+						<img src={Logo} />
 					</Link>
 				</div>
 				<ul className="navbar_menu">

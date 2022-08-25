@@ -1,16 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from "./pages/Main";
-import Detail from "./pages/Detail";
+import { useState, useEffect } from 'react';
+import AppRouter from './components/Router';
+import { authService } from './util/fbase';
 
 function App() {
-	return (
-		<Router>
-			<Routes>
-				<Route exact path="/" element={<Main />} />;
-				<Route path="/detail" element={<Detail />} />;
-			</Routes>
-		</Router>
-	);
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+  }, []);
+
+  return (
+    <>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : 'Initializing...'}</>
+  );
 }
 
 export default App;
