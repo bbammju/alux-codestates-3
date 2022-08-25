@@ -1,18 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo1.png";
+import { authService } from "../util/fbase";
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: black;
+	&:focus,
+	&:hover,
+	&:visited,
+	&:link,
+	&:active {
+		text-decoration: none;
+	}
 `;
 
 const HeaderContainer = styled.div`
 	margin: 0 auto;
-
 	.navbar {
 		height: 100px;
-		weight: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -51,10 +57,11 @@ const HeaderContainer = styled.div`
 		}
 	}
 	.navbar_logo {
+		flex: 1 1 auto;
 	}
 	.navbar_logo img {
 		width: 250px;
-		height: 100px;
+		height: 110px;
 		object-fit: cover;
 	}
 	.navbar_menu {
@@ -74,13 +81,13 @@ const HeaderContainer = styled.div`
 	}
 `;
 
-const Header = () => {
+const Header = ({ isLoggedIn }) => {
 	return (
 		<HeaderContainer>
 			<nav className="navbar">
 				<div className="navbar_logo">
 					<Link to="/">
-						<img src={Logo} />
+						<img src={Logo} alt="새로고침" />
 					</Link>
 				</div>
 				<ul className="navbar_menu">
@@ -94,6 +101,11 @@ const Header = () => {
 							<div>FAQ</div>
 						</StyledLink>
 					</li>
+					{isLoggedIn && (
+						<li className="navlist" onClick={() => authService.signOut()}>
+							<div>Logout</div>
+						</li>
+					)}
 				</ul>
 			</nav>
 		</HeaderContainer>

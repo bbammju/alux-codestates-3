@@ -17,7 +17,6 @@ const Auth = () => {
 		const {
 			target: { name, value },
 		} = e;
-
 		if (name === "email") {
 			setEmail(value);
 		} else if (name === "password") {
@@ -40,18 +39,14 @@ const Auth = () => {
 
 	const toggleAccount = () => setNewAccount(prev => !prev);
 
-	const onSocialClick = async e => {
+	const onSocialLogin = async e => {
 		const {
 			target: { name },
 		} = e;
-
 		let provider;
-
 		if (name === "google") {
 			provider = new GoogleAuthProvider();
 		}
-		console.log(provider);
-
 		await signInWithPopup(authService, provider);
 	};
 
@@ -79,10 +74,10 @@ const Auth = () => {
 			</form>
 			{error}
 			<span onClick={toggleAccount}>
-				{newAccount ? "계정이 있으신가요?" : "가입하기"}
+				{newAccount ? "계정이 이미 있으신가요?" : "가입하기"}
 			</span>
 			<div>
-				<button name="google" onClick={onSocialClick}>
+				<button name="google" onClick={onSocialLogin}>
 					Continue with Google
 				</button>
 			</div>
