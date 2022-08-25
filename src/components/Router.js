@@ -4,7 +4,7 @@ import Detail from '../pages/Detail';
 import Auth from '../routes/Auth';
 import Header from './Header';
 import PostItem from './PostItem';
-import Faq from '../pages/Faq/Faq';
+import Faq from '../pages/Faq/Faqs';
 import FaqWrite from '../pages/Faq/FaqWrite';
 
 const AppRouter = ({ isLoggedIn }) => {

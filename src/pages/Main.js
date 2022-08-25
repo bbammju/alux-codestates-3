@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import ChannelTalk from '../components/ChannelTalk';
-import styled from 'styled-components';
 import { getDocs, collection } from 'firebase/firestore';
 import { dbService } from '../util/fbase';
 import { useEffect } from 'react';
+import styled from 'styled-components';
 import Item from '../components/Item';
 import Footer from '../components/Footer';
 
