@@ -5,6 +5,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { dbService } from "../util/fbase";
 import { useEffect } from "react";
 import Item from "../components/Item";
+import Footer from "../components/Footer";
 
 function Main() {
 	const [dbData, setDbData] = useState([]);
@@ -28,6 +29,7 @@ function Main() {
 					: dbData.slice(0).map((item, idx) => <Item key={idx} data={item} />)}
 			</BackgroundContainer>
 			<ChannelTalk />
+			<Footer />
 		</div>
 	);
 }

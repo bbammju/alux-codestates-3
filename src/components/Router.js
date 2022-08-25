@@ -4,7 +4,6 @@ import Detail from "../pages/Detail";
 import Auth from "../routes/Auth";
 import Header from "./Header";
 import PostItem from "./PostItem";
-import Footer from "./Footer";
 
 const AppRouter = ({ isLoggedIn }) => {
 	return (
@@ -21,7 +20,6 @@ const AppRouter = ({ isLoggedIn }) => {
 					<Route path="/" element={<Auth />} />
 				)}
 			</Routes>
-			<Footer />
 		</Router>
 	);
 };
