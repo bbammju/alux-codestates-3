@@ -9,7 +9,6 @@ const Faqs = ({ userObj }) => {
   const [dbFaqsData, setDbFaqData] = useState([]);
 
   useEffect(() => {
-    // realtime
     onSnapshot(collection(dbService, 'faqs'), (snapshot) => {
       const newFaqsData = snapshot.docs.map((doc) => ({
         id: doc.id,
