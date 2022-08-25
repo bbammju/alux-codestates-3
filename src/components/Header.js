@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Logo from "../images/Logo.png";
+import Logo from "../images/Logo1.png";
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
@@ -90,6 +90,11 @@ const Header = () => {
 					</Link>
 				</div>
 				<ul className="navbar_menu">
+					<li className="navlist">
+						<StyledLink to="/detail">
+							<div>상세페이지</div>
+						</StyledLink>
+					</li>
 					<li className="navlist">
 						<StyledLink to="/">
 							<div>FAQ</div>
