@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Logo from '../assets/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../assets/Logo1.png';
 import { authService } from '../util/fbase';
 
 const StyledLink = styled(Link)`
@@ -81,6 +81,8 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = ({ isLoggedIn }) => {
+  const navigate = useNavigate();
+
   return (
     <HeaderContainer>
       <nav className='navbar'>
@@ -102,7 +104,13 @@ const Header = ({ isLoggedIn }) => {
             </StyledLink>
           </li>
           {isLoggedIn && (
-            <li className='navlist' onClick={() => authService.signOut()}>
+            <li
+              className='navlist'
+              onClick={() => {
+                authService.signOut();
+                navigate('/');
+              }}
+            >
               <div>Logout</div>
             </li>
           )}

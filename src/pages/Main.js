@@ -29,7 +29,6 @@ function Main() {
           ? null
           : dbData.map((item, idx) => <Item key={idx} data={item} />)}
       </BackgroundContainer>
-
       <ChannelTalk />
     </div>
   );
