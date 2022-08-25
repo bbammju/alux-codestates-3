@@ -29,14 +29,15 @@ const BackgroundContainer = styled.form`
 
 const LogoContainer = styled.div`
 	width: 600px;
-	height: 100px;
+	height: 200px;
 	display: flex;
-	margin-bottom: 5px;
+    margin-top: -30px;
+    margin-bottom: -70px;
 `;
 
 const LogoImg = styled.img`
-	max-width: 140px;
-	max-height: 90px;
+	max-width: 600px;
+	max-height: 300px;
 	margin-left: auto;
 	margin-right: auto;
 `;
