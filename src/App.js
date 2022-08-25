@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AppRouter from './components/Router';
-import Main from './pages/Main';
+import { authService } from './util/fbase';
 
 function App() {
   const [isLoggedIn, setIsLoaggedIn] = useState(true);

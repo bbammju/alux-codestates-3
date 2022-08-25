@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Auth from '../routes/Auth';
+// import firebase from 'firebase/compat/app'; // import firebase from 'firebase/compat';
 import Main from '../pages/Main';
 import Test from '../pages/Test';
 
