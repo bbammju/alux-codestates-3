@@ -29,6 +29,7 @@ function Main() {
 					: dbData.slice(0).map((item, idx) => <Item key={idx} data={item} />)}
 			</BackgroundContainer>
 			<ChannelTalk />
+      <BoundaryLine />
 			<Footer />
 		</div>
 	);
