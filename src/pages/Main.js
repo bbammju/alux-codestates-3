@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import ChannelTalk from "../components/ChannelTalk";
+
 import styled from "styled-components";
 
 function Main() {

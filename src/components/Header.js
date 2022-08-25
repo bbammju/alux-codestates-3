@@ -55,12 +55,9 @@ const HeaderContainer = styled.div`
 			}
 		}
 	}
-	.navbar_logo {
-		flex: 1 1 auto;
-	}
 	.navbar_logo img {
 		width: 250px;
-		height: 110px;
+		height: 100px;
 		object-fit: cover;
 	}
 	.navbar_menu {
@@ -86,7 +83,7 @@ const Header = () => {
 			<nav className="navbar">
 				<div className="navbar_logo">
 					<Link to="/">
-						<img src={Logo} />
+						<img src={Logo} st />
 					</Link>
 				</div>
 				<ul className="navbar_menu">
