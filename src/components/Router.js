@@ -7,7 +7,7 @@ import PostItem from './PostItem';
 import Faq from '../pages/Faq/Faqs';
 import FaqWrite from '../pages/Faq/FaqWrite';
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <Router>
       <Header isLoggedIn={isLoggedIn} />
@@ -17,7 +17,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path='/' element={<Main />} />
             <Route path='/detail' element={<Detail />} />
             <Route path='/post' element={<PostItem />} />
-            <Route path='/faq' element={<Faq />} />
+            <Route path='/faq' element={<Faq userObj={userObj} />} />
             <Route path='/faqwrite' element={<FaqWrite />} />
           </>
         ) : (

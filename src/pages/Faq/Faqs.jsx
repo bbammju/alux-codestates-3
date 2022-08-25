@@ -4,7 +4,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { dbService } from '../../util/fbase';
 import Faq from './Faq';
 
-const Faqs = () => {
+const Faqs = ({ userObj }) => {
   const navigate = useNavigate();
   const [dbFaqsData, setDbFaqData] = useState([]);
 
@@ -25,7 +25,9 @@ const Faqs = () => {
 
   return (
     <>
-      <button onClick={() => navigate('/faqwrite')}>
+      <button
+        onClick={() => navigate('/faqwrite', { state: { uid: userObj.uid } })}
+      >
         새로운 faq 글 등록하기
       </button>
       <div>

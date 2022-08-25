@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import { dbService } from '../../util/fbase';
 
 const FaqWrite = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  console.log(location.state.uid);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const FaqWrite = () => {
       content,
       createdAt: Date.now(),
       updatedAt: Date.now(),
+      creatorId: location.state.uid,
     });
 
     setTitle('');
