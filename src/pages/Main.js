@@ -22,7 +22,6 @@ function Main() {
   }, []);
   return (
     <div>
-      <Header />
       <BoundaryLine />
       <BackgroundContainer>
         {dbData.length === 0
@@ -45,9 +44,9 @@ const BackgroundContainer = styled.div`
 `;
 
 const BoundaryLine = styled.h1`
-    font-size: 20px;
-    text-align: center;
-    border-bottom:1px solid gray;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid gray;
 `;
 
 export default Main;
