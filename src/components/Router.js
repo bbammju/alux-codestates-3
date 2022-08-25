@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import firebase from 'firebase/compat/app'; // import firebase from 'firebase/compat';
 import Main from '../pages/Main';
-import Test from '../pages/Test';
+import Auth from '../routes/Auth';
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -12,7 +12,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path='/' element={<Main />} />
           </>
         ) : (
-          <Route path='/' element={<Test />} />
+          <Route path='/' element={<Auth />} />
         )}
       </Routes>
     </Router>
