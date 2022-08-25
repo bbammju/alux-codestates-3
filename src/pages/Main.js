@@ -5,6 +5,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { dbService } from "../util/fbase";
 import { useEffect } from "react";
 import Item from "../components/Item";
+
 function Main() {
 	const [dbData, setDbData] = useState([]);
 
@@ -18,15 +19,14 @@ function Main() {
 		};
 		getData();
 	}, []);
-
 	return (
 		<div>
+			<BoundaryLine />
 			<BackgroundContainer>
 				{dbData.length === 0
 					? null
 					: dbData.slice(0).map((item, idx) => <Item key={idx} data={item} />)}
 			</BackgroundContainer>
-
 			<ChannelTalk />
 		</div>
 	);
@@ -40,6 +40,11 @@ const BackgroundContainer = styled.div`
 	margin-right: auto;
 	display: flex;
 	flex-wrap: wrap;
+`;
+
+const BoundaryLine = styled.h1`
+	font-size: 20px;
+	text-align: center;
 `;
 
 export default Main;

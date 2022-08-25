@@ -1,18 +1,11 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo1.png";
 import { authService } from "../util/fbase";
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: black;
-	&:focus,
-	&:hover,
-	&:visited,
-	&:link,
-	&:active {
-		text-decoration: none;
-	}
 `;
 
 const HeaderContainer = styled.div`
@@ -21,8 +14,8 @@ const HeaderContainer = styled.div`
 		height: 100px;
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
 		background-color: #eee;
+		align-items: center;
 		padding: 9px 12px;
 		min-width: 680px;
 		@media (max-width: 960px) {
@@ -82,6 +75,8 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = ({ isLoggedIn }) => {
+	const navigate = useNavigate();
+
 	return (
 		<HeaderContainer>
 			<nav className="navbar">
@@ -91,9 +86,10 @@ const Header = ({ isLoggedIn }) => {
 					</Link>
 				</div>
 				<ul className="navbar_menu">
+					{/* 관리자모드에서 노출 */}
 					<li className="navlist">
-						<StyledLink to="/detail">
-							<div>상세페이지</div>
+						<StyledLink to="/post">
+							<div>업로드</div>
 						</StyledLink>
 					</li>
 					<li className="navlist">
@@ -102,7 +98,13 @@ const Header = ({ isLoggedIn }) => {
 						</StyledLink>
 					</li>
 					{isLoggedIn && (
-						<li className="navlist" onClick={() => authService.signOut()}>
+						<li
+							className="navlist"
+							onClick={() => {
+								authService.signOut();
+								navigate("/");
+							}}
+						>
 							<div>Logout</div>
 						</li>
 					)}
