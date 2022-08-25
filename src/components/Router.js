@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from '../pages/Main';
-import Detail from './pages/Detail';
+import Detail from '../pages/Detail';
 import Auth from '../routes/Auth';
 
 const AppRouter = ({ isLoggedIn }) => {

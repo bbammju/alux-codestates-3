@@ -1,6 +1,8 @@
 import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+// import 'firebase/compat/firestore';
+import { getFirestore } from 'firebase/firestore';
 
 // web app's Firebase configuration
 const firebaseConfig = {
@@ -13,6 +15,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig); // firebase project setting
+export const firebaseApp = initializeApp(firebaseConfig); // firebase project setting
 export const authService = getAuth(firebaseApp);
-export default firebaseApp;
+export const dbService = getFirestore();
+
+// 기존 범주님 코드
+// const db = firebase.firestore();
+// export { db };
