@@ -49,7 +49,7 @@ const TextContainer = styled.div`
     margin-top: 15px;
 `;
 
-const ThumbnailImg = styled.div`
+const ThumbnailImg = styled.img`
     width: 150px;
     height: 150px;
     border: 1px solid black;
@@ -99,7 +99,7 @@ const PostBtn = styled.button`
     margin-right: 10px;
     &:hover {
         background-color: #fffcfb;
-        color: #ab8643;
+        color: #00bfff;
         border: 1px solid #00bfff;
     }
 `;
@@ -118,11 +118,11 @@ const CancelBtn = styled.button`
 `;
 
 function PostItem(){
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [postInfo, setPostInfo] = useState({
         name: '',
         image: [],
-        content: ''
+        explanation: ''
     })
 
     const inputHandler = (e) => {
@@ -132,7 +132,7 @@ function PostItem(){
 
     const handleUpload = (e) => {
         e.preventDefault();
-      
+        console.log(e.target.files)
         const file = e.target.files[0];
         setPostInfo({...postInfo, image: file});
     };
@@ -151,9 +151,14 @@ function PostItem(){
         //   {headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true});
     
         // if (response.data.message === 'ok') {
-        //     navigate.push('/');
+        //     navigate('/');
         // }
     };
+
+    const handleCancelBtn = () => {
+        navigate('/');
+    }
+    console.log(postInfo)
 
     return (
         <>
@@ -165,13 +170,13 @@ function PostItem(){
                     <TextContainer>상품 이름</TextContainer>
                     <TextBox name="name" onChange={inputHandler}></TextBox>
                     <TextContainer>상품 이미지</TextContainer>
-                    <ThumbnailImg name="image"/>
-                    <UploadFileBtn type="file" accept="image/*" onChange={handleUpload}></UploadFileBtn>
+                    <ThumbnailImg />
+                    <UploadFileBtn name="image" type="file" accept="image/*" onChange={handleUpload}></UploadFileBtn>
                     <TextContainer>상품 설명</TextContainer>
-                    <TextBox2 name="content" onChange={inputHandler}></TextBox2>
+                    <TextBox2 name="explanation" onChange={inputHandler}></TextBox2>
                     <ButtonContainer>
                         <PostBtn onClick={handlePostRequest}>등록</PostBtn>
-                        <CancelBtn>취소</CancelBtn>
+                        <CancelBtn onClick={handleCancelBtn}>취소</CancelBtn>
                     </ButtonContainer>
                 </BackgroundContainer>
             </ModalBackdrop>
