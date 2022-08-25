@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/Logo1.png';
+import Logo from '../assets/logo.png';
 import { authService } from '../util/fbase';
 
 const StyledLink = styled(Link)`
@@ -22,7 +22,6 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #eee;
     padding: 9px 12px;
     min-width: 680px;
     @media (max-width: 960px) {
@@ -91,9 +90,10 @@ const Header = ({ isLoggedIn }) => {
           </Link>
         </div>
         <ul className='navbar_menu'>
+          {/* 관리자모드에서 노출 */}
           <li className='navlist'>
-            <StyledLink to='/detail'>
-              <div>상세페이지</div>
+            <StyledLink to='/post'>
+              <div>업로드</div>
             </StyledLink>
           </li>
           <li className='navlist'>

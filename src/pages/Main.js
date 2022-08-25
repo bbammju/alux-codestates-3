@@ -20,9 +20,10 @@ function Main() {
     };
     getData();
   }, []);
-
   return (
     <div>
+      <Header />
+      <BoundaryLine />
       <BackgroundContainer>
         {dbData.length === 0
           ? null
@@ -42,6 +43,12 @@ const BackgroundContainer = styled.div`
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
+`;
+
+const BoundaryLine = styled.h1`
+    font-size: 20px;
+    text-align: center;
+    border-bottom:1px solid gray;
 `;
 
 export default Main;
