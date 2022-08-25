@@ -25,7 +25,6 @@ function Main() {
   console.log(dbData)
   return (
     <div>
-      <Header />
       <BackgroundContainer>
         {dbData.length === 0 ? null 
         : dbData.map((item, idx) => <Item key={idx} data={item}/>)}
@@ -35,6 +34,8 @@ function Main() {
     </div>
   );
 }
+
+export default Main;
 
 const BackgroundContainer = styled.div`
     width: 900px;
