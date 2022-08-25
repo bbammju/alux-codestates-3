@@ -3,6 +3,8 @@ import { authService } from '../util/fbase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 
 const Auth = () => {
@@ -27,17 +29,9 @@ const Auth = () => {
     e.preventDefault();
     try {
       if (newAccount) {
-        const result = await createUserWithEmailAndPassword(
-          authService,
-          email,
-          password
-        );
+        await createUserWithEmailAndPassword(authService, email, password);
       } else {
-        const result = await signInWithEmailAndPassword(
-          authService,
-          email,
-          password
-        );
+        await signInWithEmailAndPassword(authService, email, password);
       }
     } catch (error) {
       setError(error.message);
@@ -45,6 +39,21 @@ const Auth = () => {
   };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
+
+  const onSocialClick = async (e) => {
+    const {
+      target: { name },
+    } = e;
+
+    let provider;
+
+    if (name === 'google') {
+      provider = new GoogleAuthProvider();
+    }
+    console.log(provider);
+
+    await signInWithPopup(authService, provider);
+  };
 
   return (
     <div>
@@ -73,7 +82,9 @@ const Auth = () => {
         {newAccount ? '계정이 있으신가요?' : '가입하기'}
       </span>
       <div>
-        <button>Continue with Google</button>
+        <button name='google' onClick={onSocialClick}>
+          Continue with Google
+        </button>
       </div>
     </div>
   );
