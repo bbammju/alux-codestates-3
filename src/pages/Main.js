@@ -24,8 +24,7 @@ function Main() {
 
   return (
     <div>
-      <Header />
-
+      {/* <Header /> */}
       <ChannelTalk />
     </div>
   );
