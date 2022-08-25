@@ -9,7 +9,6 @@ const FooterContainer = styled.footer`
 	background-color: #eee;
 	color: black;
 	margin-top: 50px;
-	min-width: 660px;
 	bottom: 0;
 	width: 100%;
 
@@ -75,6 +74,7 @@ const FooterContainer = styled.footer`
 	.footer_github > ul {
 		list-style-type: none;
 		font-size: 25px;
+		min-width: 701px;
 	}
 
 	.footer_github_members {
