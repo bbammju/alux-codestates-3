@@ -31,7 +31,7 @@ const Faqs = ({ userObj }) => {
       </div>
       <div>
         {dbFaqsData.map((faq) => (
-          <Faq key={faq.id} faq={faq} />
+          <Faq key={faq.id} faq={faq} isOwner={faq.creatorId === userObj.uid} />
         ))}
       </div>
     </>

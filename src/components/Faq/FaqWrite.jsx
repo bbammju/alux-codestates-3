@@ -5,10 +5,11 @@ import { dbService } from '../../util/fbase';
 
 const FaqWrite = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const {
+    state: { uid },
+  } = useLocation();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  console.log(location.state.uid);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const FaqWrite = () => {
       content,
       createdAt: Date.now(),
       updatedAt: Date.now(),
-      creatorId: location.state.uid,
+      creatorId: uid,
     });
 
     setTitle('');

@@ -4,8 +4,8 @@ import Detail from '../pages/Detail';
 import Auth from '../routes/Auth';
 import Header from './Header';
 import PostItem from './PostItem';
-import Faq from '../pages/Faq/Faqs';
-import FaqWrite from '../pages/Faq/FaqWrite';
+import Faq from './Faq/Faqs';
+import FaqWrite from './Faq/FaqWrite';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
