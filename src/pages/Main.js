@@ -1,14 +1,15 @@
-import React from "react";
 import Header from "../components/Header";
+import ChannelTalk from "../components/ChannelTalk";
+import styled from "styled-components";
 
-const Main = () => {
-  return(
-    <>
-    <div>
-    <Header/>
-    </div>
-    </>
-  );
-};
+function Main() {
+	return (
+		<div>
+			<Header />
 
-export default Main
+			<ChannelTalk />
+		</div>
+	);
+}
+
+export default Main;

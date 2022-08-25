@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import firebase from 'firebase/compat/app'; // import firebase from 'firebase/compat';
 import Main from '../pages/Main';
+import Detail from './pages/Detail';
 import Auth from '../routes/Auth';
 
 const AppRouter = ({ isLoggedIn }) => {
@@ -10,6 +10,7 @@ const AppRouter = ({ isLoggedIn }) => {
         {isLoggedIn ? (
           <>
             <Route path='/' element={<Main />} />
+            <Route path='/detail' element={<Detail />} />
           </>
         ) : (
           <Route path='/' element={<Auth />} />
