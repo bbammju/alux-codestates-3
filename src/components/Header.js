@@ -6,13 +6,6 @@ import { authService } from '../util/fbase';
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
 `;
 
 const HeaderContainer = styled.div`
@@ -23,6 +16,7 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 9px 12px;
+    background-color: #eee;
     min-width: 680px;
     @media (max-width: 960px) {
       .navlist {
@@ -84,26 +78,26 @@ const Header = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   return (
-    <HeaderContainer>
-      <nav className='navbar'>
-        <div className='navbar_logo'>
-          <Link to='/'>
-            <img src={Logo} />
-          </Link>
-        </div>
-        <ul className='navbar_menu'>
-          {/* 관리자모드에서 노출 */}
-          <li className='navlist'>
-            <StyledLink to='/post'>
-              <div>업로드</div>
-            </StyledLink>
-          </li>
-          <li className='navlist'>
-            <StyledLink to='/faq'>
-              <div>FAQ</div>
-            </StyledLink>
-          </li>
-          {isLoggedIn && (
+    isLoggedIn && (
+      <HeaderContainer>
+        <nav className='navbar'>
+          <div className='navbar_logo'>
+            <Link to='/'>
+              <img src={Logo} alt='새로고침' />
+            </Link>
+          </div>
+          <ul className='navbar_menu'>
+            {/* 관리자모드에서 노출 */}
+            <li className='navlist'>
+              <StyledLink to='/post'>
+                <div>업로드</div>
+              </StyledLink>
+            </li>
+            <li className='navlist'>
+              <StyledLink to='/faq'>
+                <div>FAQ</div>
+              </StyledLink>
+            </li>
             <li
               className='navlist'
               onClick={() => {
@@ -113,10 +107,11 @@ const Header = ({ isLoggedIn }) => {
             >
               <div>Logout</div>
             </li>
-          )}
-        </ul>
-      </nav>
-    </HeaderContainer>
+          </ul>
+        </nav>
+      </HeaderContainer>
+    )
   );
 };
+
 export default Header;
