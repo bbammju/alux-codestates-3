@@ -5,19 +5,14 @@ import Logo from "../assets/Logo1.png";
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: black;
-	&:focus,
-	&:hover,
-	&:visited,
-	&:link,
-	&:active {
-		text-decoration: none;
-	}
 `;
 
 const HeaderContainer = styled.div`
 	margin: 0 auto;
+
 	.navbar {
 		height: 100px;
+		weight: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
