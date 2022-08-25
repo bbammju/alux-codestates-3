@@ -22,7 +22,6 @@ function Main() {
   }, []);
   return (
     <div>
-      <Header />
       <BoundaryLine />
       <BackgroundContainer>
         {dbData.length === 0
