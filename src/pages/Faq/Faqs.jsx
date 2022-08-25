@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { dbService } from '../../util/fbase';
 import Faq from './Faq';
 
@@ -8,19 +8,15 @@ const Faqs = ({ userObj }) => {
   const navigate = useNavigate();
   const [dbFaqsData, setDbFaqData] = useState([]);
 
-  const getFaqData = async () => {
-    const dbData = await getDocs(collection(dbService, 'faqs'));
-    dbData.forEach((document) => {
-      const newFaqsObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setDbFaqData((prev) => [newFaqsObject, ...prev]);
-    });
-  };
-
   useEffect(() => {
-    getFaqData();
+    // realtime
+    onSnapshot(collection(dbService, 'faqs'), (snapshot) => {
+      const newFaqsData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDbFaqData(newFaqsData);
+    });
   }, []);
 
   return (
