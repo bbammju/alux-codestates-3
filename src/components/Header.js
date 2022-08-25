@@ -24,67 +24,56 @@ const HeaderContainer = styled.div`
 		background-color: #eee;
 		padding: 9px 12px;
 		min-width: 680px;
-
 		@media (max-width: 960px) {
 			.navlist {
 				margin: 15px 20px;
 			}
 		}
-
 		@media (max-width: 881px) {
 			.navlist {
 				margin: 15px 15px;
 			}
 		}
-
 		@media (max-width: 840px) {
 			.navlist {
 				margin: 15px 10px;
 			}
 		}
-
 		@media (max-width: 800px) {
 			.navlist {
 				margin: 15px 5px;
 			}
 		}
-
 		@media (max-width: 761px) {
 			.navlist {
 				margin: 15px 0px;
 			}
 		}
-
 		@media (max-width: 720px) {
 			.navbar_menu {
 				padding-left: 0px;
 			}
 		}
 	}
-
 	.navbar_logo {
 		flex: 1 1 auto;
 	}
-
 	.navbar_logo img {
 		width: 250px;
 		height: 110px;
 		object-fit: cover;
 	}
-
 	.navbar_menu {
 		display: flex;
 		list-style: none;
 		font-size: 20px;
 		margin: 0px;
 	}
-
 	.navbar_menu li {
 		padding: 9px 12px;
 		margin: 15px 30px;
 		cursor: pointer;
 	}
-
 	.navbar_menu li:hover {
 		background-color: white;
 		border-radius: 10px;
