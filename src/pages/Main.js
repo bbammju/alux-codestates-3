@@ -13,21 +13,20 @@ function Main() {
   useEffect(() => {
     const getData = async () => {
       let resData = [];
-      let result = await getDocs(collection(dbService, 'products')).then(
-        (res) => {
-          res.forEach((doc) => resData.push(doc.data()));
-        }
-      );
+      await getDocs(collection(dbService, 'products')).then((res) => {
+        res.forEach((doc) => resData.push(doc.data()));
+      });
       setDbData([...dbData, ...resData]);
     };
     getData();
   }, []);
-  console.log(dbData)
+  console.log(dbData);
   return (
     <div>
       <BackgroundContainer>
-        {dbData.length === 0 ? null 
-        : dbData.map((item, idx) => <Item key={idx} data={item}/>)}
+        {dbData.length === 0
+          ? null
+          : dbData.map((item, idx) => <Item key={idx} data={item} />)}
       </BackgroundContainer>
 
       <ChannelTalk />
@@ -35,16 +34,14 @@ function Main() {
   );
 }
 
-export default Main;
-
 const BackgroundContainer = styled.div`
-    width: 900px;
-    height: auto;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-wrap: wrap;
+  width: 900px;
+  height: auto;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export default Main;
