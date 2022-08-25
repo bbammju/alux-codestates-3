@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Logo from "../images/Logo1.png";
+import Logo from "../assets/Logo1.png";
 
 const StyledLink = styled(Link)`
 	text-decoration: none;
