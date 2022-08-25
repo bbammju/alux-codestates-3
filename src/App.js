@@ -1,9 +1,10 @@
 import Main from './pages/Main'
+import Detail from './pages/Detail';
 
 
 function App() {
   return (
-    <Main />
+    <Detail />
   );
 }
 
