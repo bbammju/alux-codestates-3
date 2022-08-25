@@ -8,16 +8,14 @@ import Item from '../components/Item';
 import Footer from '../components/Footer';
 
 function Main() {
-  const [dbData, setDbData] = useState([]);
+  const [dbProductsData, setProductsData] = useState([]);
+
+  const getData = async () => {
+    const dbData = await getDocs(collection(dbService, 'products'));
+    dbData.forEach((doc) => setProductsData((prev) => [doc.data(), ...prev]));
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      let resData = [];
-      await getDocs(collection(dbService, 'products')).then((res) => {
-        res.forEach((doc) => resData.push(doc.data()));
-      });
-      setDbData([...dbData, ...resData]);
-    };
     getData();
   }, []);
 
@@ -25,9 +23,11 @@ function Main() {
     <div>
       <BoundaryLine />
       <BackgroundContainer>
-        {dbData.length === 0
+        {dbProductsData.length === 0
           ? null
-          : dbData.slice(0).map((item, idx) => <Item key={idx} data={item} />)}
+          : dbProductsData
+              .slice(0)
+              .map((item, idx) => <Item key={idx} data={item} />)}
       </BackgroundContainer>
       <ChannelTalk />
       <BoundaryLine />

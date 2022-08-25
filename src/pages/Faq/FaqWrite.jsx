@@ -1,20 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import { dbService } from '../../util/fbase';
 
 const FaqWrite = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    /* await collection('faqs').addDoc(dbService, 'faqs', {
-      title,
-      content,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    }); */
 
     await addDoc(collection(dbService, 'faqs'), {
       title,
@@ -25,13 +20,13 @@ const FaqWrite = () => {
 
     setTitle('');
     setContent('');
+    navigate('/faq');
   };
 
   const onChange = (e) => {
     const {
       target: { value, name },
     } = e;
-
     name === 'title' ? setTitle(value) : setContent(value);
   };
 
