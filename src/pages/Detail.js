@@ -23,7 +23,7 @@ const Detail = () => {
   // });
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <ProductContainer>
           <ProductLogo src={samplelogo} />

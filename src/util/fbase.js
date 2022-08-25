@@ -1,7 +1,6 @@
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-// import 'firebase/compat/firestore';
 import { getFirestore } from 'firebase/firestore';
 
 // web app's Firebase configuration
@@ -15,7 +14,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig); // firebase project setting
+export const firebaseApp = initializeApp(firebaseConfig);
 export const authService = getAuth(firebaseApp);
 export const dbService = getFirestore();
 
