@@ -85,7 +85,7 @@ const ButtonContainer = styled.div`
   margin-top: 15px;
 `;
 
-const PostBtn = styled.div`
+const PostBtn = styled.button`
   height: 32px;
   width: 122px;
   font-size: 14px;
@@ -145,7 +145,6 @@ function PostItem( {userObj} ) {
 
     await addDoc(collection(dbService, 'products'), postInfo);
     navigate('/');
-    console.log(postInfo)
     // const formData = new FormData();
     // for (const key in postInfo) {
     //   if (Array.isArray(postInfo[key])) {
@@ -161,7 +160,6 @@ function PostItem( {userObj} ) {
     //     navigate('/');
     // }
   };
-  console.log(postInfo)
   const handleCancelBtn = () => {
     navigate('/');
   };
