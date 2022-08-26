@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { storageService } from '../util/fbase';
+import { v4 as uuidv4 } from 'uuid';
+import { ref, uploadString } from '@firebase/storage';
 
-const ImageUpload = () => {
+const ImageUpload = ({ userObj }) => {
   const [attachment, setAttachment] = useState();
 
   const onFileChange = (e) => {
@@ -17,14 +20,23 @@ const ImageUpload = () => {
       } = finishedEvent;
       setAttachment(result);
     };
+
     // file read
     fileReader.readAsDataURL(theFile);
   };
 
   const onClearAttachment = () => setAttachment(null);
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const fileReference = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+    const response = await uploadString(fileReference, attachment, 'data_url');
+    console.log(response);
+  };
+
   return (
-    <div>
+    <form onSubmit={onSubmit}>
       <h3>ImageUpload</h3>
       <input
         type='file'
@@ -40,7 +52,8 @@ const ImageUpload = () => {
           <button onClick={onClearAttachment}>이미지 지우기</button>
         </div>
       )}
-    </div>
+      <button onSubmit={onSubmit}>이미지 등록하기</button>
+    </form>
   );
 };
 

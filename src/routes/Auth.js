@@ -9,6 +9,108 @@ import {
 import styled from 'styled-components';
 import PostLogo from '../assets/PostLogo.png';
 
+const Auth = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [newAccount, setNewAccount] = useState(true);
+  const [error, setError] = useState('');
+
+  const onChange = (e) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (newAccount) {
+        await createUserWithEmailAndPassword(authService, email, password);
+      } else {
+        await signInWithEmailAndPassword(authService, email, password);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const toggleAccount = () => setNewAccount((prev) => !prev);
+
+  const onSocialLogin = async (e) => {
+    const {
+      target: { name },
+    } = e;
+    let provider;
+    if (name === 'google') {
+      provider = new GoogleAuthProvider();
+    }
+    await signInWithPopup(authService, provider);
+  };
+
+  return (
+    <SignUpForm>
+      <Div>
+        <img
+          src={PostLogo}
+          style={{ width: 420, height: 300, objectFit: 'cover' }}
+          alt='새로고침'
+        ></img>
+        <form onSubmit={onSubmit}>
+          <InputForm>
+            <InputBox>
+              <Input
+                name='email'
+                type='email'
+                value={email}
+                placeholder='Email'
+                required
+                onChange={onChange}
+              />
+            </InputBox>
+            <InputBox>
+              <Input
+                name='password'
+                type='password'
+                value={password}
+                placeholder='Password'
+                autoComplete='false'
+                required
+                onChange={onChange}
+              />
+            </InputBox>
+          </InputForm>
+          <CreateBox>
+            <Create
+              type='submit'
+              value={newAccount ? 'Create Account' : 'Login'}
+            />
+          </CreateBox>
+        </form>
+        {error}
+        <Pointer onClick={toggleAccount}>
+          {newAccount ? '계정이 이미 있으신가요?' : '가입하기'}
+        </Pointer>
+        <Google>
+          <button
+            className='loginBtn loginBtn--google'
+            name='google'
+            onClick={onSocialLogin}
+          >
+            Continue with Google
+          </button>
+        </Google>
+      </Div>
+    </SignUpForm>
+  );
+};
+
+export default Auth;
+
 const SignUpForm = styled.div`
   margin: 0 auto;
   padding-top: 50px;
@@ -113,105 +215,3 @@ const Google = styled.div`
     cursor: pointer;
   }
 `;
-const Auth = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [newAccount, setNewAccount] = useState(true);
-  const [error, setError] = useState('');
-
-  const onChange = (e) => {
-    const {
-      target: { name, value },
-    } = e;
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (newAccount) {
-        await createUserWithEmailAndPassword(authService, email, password);
-      } else {
-        await signInWithEmailAndPassword(authService, email, password);
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const toggleAccount = () => setNewAccount((prev) => !prev);
-
-  const onSocialLogin = async (e) => {
-    const {
-      target: { name },
-    } = e;
-    let provider;
-    if (name === 'google') {
-      provider = new GoogleAuthProvider();
-    }
-    await signInWithPopup(authService, provider);
-  };
-
-  return (
-    <SignUpForm>
-      <Div>
-        <img
-          src={PostLogo}
-          style={{ width: 420, height: 300, objectFit: 'cover' }}
-          alt='새로고침'
-        ></img>
-
-        <form onSubmit={onSubmit}>
-          <InputForm>
-            <InputBox>
-              <Input
-                name='email'
-                type='email'
-                value={email}
-                placeholder='Email'
-                required
-                onChange={onChange}
-              />
-            </InputBox>
-            <InputBox>
-              <Input
-                name='password'
-                type='password'
-                value={password}
-                placeholder='Password'
-                autoComplete='false'
-                required
-                onChange={onChange}
-              />
-            </InputBox>
-          </InputForm>
-          <CreateBox>
-            <Create
-              type='submit'
-              value={newAccount ? 'Create Account' : 'Login'}
-            />
-          </CreateBox>
-        </form>
-        {error}
-        <Pointer onClick={toggleAccount}>
-          {newAccount ? '계정이 이미 있으신가요?' : '가입하기'}
-        </Pointer>
-        <Google>
-          <button
-            className='loginBtn loginBtn--google'
-            name='google'
-            onClick={onSocialLogin}
-          >
-            Continue with Google
-          </button>
-        </Google>
-      </Div>
-    </SignUpForm>
-  );
-};
-
-export default Auth;
