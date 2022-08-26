@@ -59,12 +59,21 @@ npm start
 
 <details>
 <summary>figma 사용</summary>
-<p>메인 페이지</p>
 
-<p>상품 상세 페이지</p>
+<h3>메인 페이지</h3>
 
-<p>상품 등록 페이지</p>
+![image](https://user-images.githubusercontent.com/62678492/186843232-4448304c-088a-4e31-bb90-80ec4ed2bf50.png)
 
-<p>FAQ</p>
+
+<h3>상품 상세 페이지</h3>
+
+
+<h3>상품 등록 페이지</h3>
+
+
+<h3>FAQ</h3>
+
+![image](https://user-images.githubusercontent.com/62678492/186843338-b69148a5-43db-434f-aa42-511637a59a97.png)
+
 
 </details>
