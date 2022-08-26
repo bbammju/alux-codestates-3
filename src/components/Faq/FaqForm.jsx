@@ -1,6 +1,13 @@
 import React from 'react';
 
-const FaqForm = ({ onSubmit, onChange, title, content, isEditing }) => {
+const FaqForm = ({
+  onSubmit,
+  onChange,
+  title,
+  content,
+  isEditing,
+  toggleEditing,
+}) => {
   return (
     <div>
       <h2>{isEditing ? '수정할 글을 입력해 주세요:)' : '글 등록 페이지'}</h2>
@@ -21,6 +28,7 @@ const FaqForm = ({ onSubmit, onChange, title, content, isEditing }) => {
           placeholder='글 내용을 입력해주세요 :)'
         />
         <button>{isEditing ? '수정하기' : '등록하기'}</button>
+        <button onClick={toggleEditing}>취소</button>
       </form>
     </div>
   );
