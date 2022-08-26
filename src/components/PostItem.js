@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Logo from '../assets/PostLogo.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
+import { dbService } from '../util/fbase'
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -115,12 +117,15 @@ const CancelBtn = styled.button`
   margin-left: 10px;
 `;
 
-function PostItem() {
+function PostItem( {userObj} ) {
   const navigate = useNavigate();
+
   const [postInfo, setPostInfo] = useState({
     name: '',
-    image: [],
+    creatorId: userObj.uid,
     explanation: '',
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
   });
 
   const inputHandler = (e) => {
@@ -135,16 +140,19 @@ function PostItem() {
     setPostInfo({ ...postInfo, image: file });
   };
 
-  const handlePostRequest = () => {
-    const formData = new FormData();
-    for (const key in postInfo) {
-      if (Array.isArray(postInfo[key])) {
-        formData.append(key, JSON.stringify(postInfo[key]));
-      } else {
-        formData.append(key, postInfo[key]);
-      }
-    }
-    console.log(formData);
+  const handlePostRequest =  async (e) => {
+    e.preventDefault();
+
+    await addDoc(collection(dbService, 'products'), postInfo);
+    navigate('/');
+    // const formData = new FormData();
+    // for (const key in postInfo) {
+    //   if (Array.isArray(postInfo[key])) {
+    //     formData.append(key, JSON.stringify(postInfo[key]));
+    //   } else {
+    //     formData.append(key, postInfo[key]);
+    //   }
+    // }
     // const response = await axios.post(`${process.env.REACT_APP_API_URL}/posts`, formData,
     //   {headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true});
 
@@ -152,11 +160,9 @@ function PostItem() {
     //     navigate('/');
     // }
   };
-
   const handleCancelBtn = () => {
     navigate('/');
   };
-
   return (
     <>
       <ModalBackdrop>

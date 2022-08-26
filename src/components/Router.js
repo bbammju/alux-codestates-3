@@ -18,7 +18,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <Route path='/' element={<Main />} />
             <Route path='/detail' element={<Detail />} />
             <Route path='/detail/post' element={<BoardPost />} />
-            <Route path='/post' element={<PostItem />} />
+            <Route path='/post' element={<PostItem userObj={userObj}/>} />
             <Route path='/faq' element={<Faq userObj={userObj} />} />
             <Route path='/faqwrite' element={<FaqWrite />} />
           </>
