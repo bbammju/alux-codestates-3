@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { storageService } from '../util/fbase';
 import { v4 as uuidv4 } from 'uuid';
-import { ref, uploadString } from '@firebase/storage';
+import { ref, uploadString, getDownloadURL } from '@firebase/storage';
 
 const ImageUpload = ({ userObj }) => {
   const [attachment, setAttachment] = useState();
@@ -30,9 +30,22 @@ const ImageUpload = ({ userObj }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const fileReference = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-    const response = await uploadString(fileReference, attachment, 'data_url');
-    console.log(response);
+    if (attachment !== '') {
+      // 파일 참조 경로 만들기
+      const attachmentReference = ref(
+        storageService,
+        `${userObj.uid}/${uuidv4()}`
+      );
+      // storage 참조 경로로 파일 업로드
+      const response = await uploadString(
+        attachmentReference,
+        attachment,
+        'data_url'
+      );
+      // storage에 있는 퍄일 URL download
+      const attachmentUrl = await getDownloadURL(response.ref);
+      setAttachment('');
+    }
   };
 
   return (
