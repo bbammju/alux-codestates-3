@@ -49,6 +49,7 @@ const Faq = ({ faq: { id, title, content }, isOwner, isUpdated }) => {
             title={newTitle}
             content={newContent}
             isEditing={isEditing}
+            toggleEditing={toggleEditing}
           />
         </>
       ) : (
