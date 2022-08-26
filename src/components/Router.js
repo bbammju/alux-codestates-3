@@ -7,7 +7,6 @@ import PostItem from './PostItem';
 import BoardPost from '../components/BoardPost';
 import Faq from './Faq/Faqs';
 import FaqWrite from './Faq/FaqWrite';
-import ImageUpload from './ImageUpload';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
@@ -22,7 +21,6 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <Route path='/post' element={<PostItem />} />
             <Route path='/faq' element={<Faq userObj={userObj} />} />
             <Route path='/faqwrite' element={<FaqWrite />} />
-            <Route path='/upload' element={<ImageUpload userObj={userObj} />} />
           </>
         ) : (
           <Route path='/' element={<Auth />} />
