@@ -1,4 +1,3 @@
-// import firebase from 'firebase/compat/app';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -17,7 +16,3 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 export const authService = getAuth(firebaseApp);
 export const dbService = getFirestore();
-
-// 기존 범주님 코드
-// const db = firebase.firestore();
-// export { db };
