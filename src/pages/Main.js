@@ -6,9 +6,11 @@ import { dbService } from "../util/fbase";
 import { useEffect } from "react";
 import Item from "../components/Item";
 import Footer from "../components/Footer";
+import { useStore } from '../store/zustand'
 
 function Main() {
 	const [dbData, setDbData] = useState([]);
+	const {cur_product, setting} = useStore()
 
 	useEffect(() => {
 		const getData = async () => {

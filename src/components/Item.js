@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useStore } from '../store/zustand'
+
 
 const ItemContainer = styled.div`
 	width: 400px;
@@ -38,9 +40,12 @@ const ExplanationContainer = styled.div`
 
 function Item({ data }) {
     const navigate = useNavigate();
+		const {cur_product, setting} = useStore()
     const handleClick = () => {
+				setting(data)
         navigate('/detail')
     }
+		
 	return (
 		<ItemContainer>
 			<ImgContainer src={data.url}></ImgContainer>
