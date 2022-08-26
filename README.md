@@ -45,16 +45,13 @@ npm start
 
 <details>
 <summary>채널톡</summary>
-  &nbsp; 1. ~~~ <br/>
-  &nbsp; 2. ~~~
-</details>
-<details>
-<summary></summary>
-&nbsp; 1. ~~~ <br/>
-&nbsp; 2. ~~~
+
+![gif채널톡](https://user-images.githubusercontent.com/81045794/186860242-155fb8eb-505f-4308-a119-5ad4bcd3fc26.gif)
+
 </details>
 
 <br/>
+
 #### WireFrame
 
 <details>
