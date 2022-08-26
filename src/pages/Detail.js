@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useStore } from '../store/zustand'
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
   const {cur_product, setting} = useStore()
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/detail/post')
+}
   return (
     <>
       <Container>
@@ -15,6 +20,8 @@ const Detail = () => {
             </InfoContainer>
           </BoardContentContainer>
         </BoardContainer>
+        <AddButton onClick={handleClick}>AddButton</AddButton>
+        <EditButton>EditButton</EditButton>
       </Container>
     </>
   );
@@ -76,34 +83,20 @@ const EditContainer = styled.div`
   font-size: 2rem;
 `;
 
-const ProductContainer = styled.div`
-  height: 20vh;
-  width: 95vw;
+const AddButton = styled.button`
+  height: 3vh;
+  width: 7vw;
   display: flex;
-`;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+`
 
-const ProductTIcontainer = styled.div`
-  height: 20vh;
-  width: 40vw;
+const EditButton = styled.button`
+  height: 3vh;
+  width: 7vw;
   display: flex;
-  flex-direction: column;
-  padding-left: 3vw;
-`;
-const ProductLogo = styled.img`
-  height: 20vh;
-  width: 12vw;
-  display: flex;
-`;
-
-const ProductTitle = styled.div`
-  height: 20vh;
-  width: 10vw;
-  display: flex;
-  font-size: 2rem;
-`;
-
-const ProductInfo = styled.div`
-  height: 20vh;
-  width: 10vw;
-  display: flex;
-`;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+`
