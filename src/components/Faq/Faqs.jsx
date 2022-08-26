@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { dbService } from '../../util/fbase';
 import Faq from './Faq';
 
 const Faqs = ({ userObj }) => {
   const navigate = useNavigate();
   const [dbFaqsData, setDbFaqData] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  const getFaqData = async () => {
+    const dbData = await getDocs(collection(dbService, 'faqs'));
+    dbData.forEach((document) => {
+      const newFaqsObject = {
+        ...document.data(),
+        id: document.id,
+      };
+      setDbFaqData((prev) => [newFaqsObject, ...prev]);
+    });
+  };
 
   useEffect(() => {
-    onSnapshot(collection(dbService, 'faqs'), (snapshot) => {
-      const newFaqsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setDbFaqData(newFaqsData);
-    });
-  }, []);
+    getFaqData();
+  }, [isUpdating]);
+
+  const isUpdated = () => setIsUpdating((prev) => !prev);
 
   return (
     <>
@@ -30,7 +38,12 @@ const Faqs = ({ userObj }) => {
       </div>
       <div>
         {dbFaqsData.map((faq) => (
-          <Faq key={faq.id} faq={faq} isOwner={faq.creatorId === userObj.uid} />
+          <Faq
+            key={faq.id}
+            faq={faq}
+            isOwner={faq.creatorId === userObj.uid}
+            isUpdated={isUpdated}
+          />
         ))}
       </div>
     </>
