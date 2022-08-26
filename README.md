@@ -36,6 +36,14 @@ npm start
   &nbsp; 2. ~~~
 </details>
 <details>
+<summary>상품 업로드</summary>
+  <img width="638" alt="스크린샷 2022-08-27 오전 12 10 52" src="https://user-images.githubusercontent.com/85840643/186940892-a92d8472-ac31-451f-acca-a4f7041aff26.png">
+<img width="782" alt="스크린샷 2022-08-27 오전 12 28 28" src="https://user-images.githubusercontent.com/85840643/186941044-7c9c1467-3a4e-40e9-ba09-65022569107c.png">
+
+  &nbsp; 1. 관리자는 새로운 제품을 사이트에 등록할 수 있다.
+  &nbsp; 2. 관리자는 기존 제품을 표시되지 않도록 비활성화 할 수 있다.
+</details>
+<details>
 <summary>상품 상세 페이지</summary>
 &nbsp; 1. ~~~ <br/>
 &nbsp; 2. ~~~
