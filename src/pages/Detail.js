@@ -1,55 +1,17 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import samplelogo from '../assets/samplelogo.jpg';
-// import { db } from '../firebase';
+import { useStore } from '../store/zustand'
 
 const Detail = () => {
-  // const getDoc = async (colId, docId) => {
-  // 	try {
-  // 		const doc = await db.collection(colId).doc(docId).get();
-  // 		if (doc.exists) {
-  // 			console.log(doc.data());
-  // 		} else {
-  // 			console.log("해당 document 없음!");
-  // 		}
-  // 		console.log("get : good!");
-  // 	} catch (e) {
-  // 		alert("get : err!");
-  // 	}
-  // };
-  // useEffect(() => {
-  // 	getDoc();
-  // });
+  const {cur_product, setting} = useStore()
   return (
     <>
-      {/* <Header /> */}
       <Container>
-        <ProductContainer>
-          <ProductLogo src={samplelogo} />
-          <ProductTIcontainer>
-            <ProductTitle>df</ProductTitle>
-            <ProductInfo>sdf</ProductInfo>
-          </ProductTIcontainer>
-        </ProductContainer>
-
         <BoardContainer>
           <BoardContentContainer>
             <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
+              <TitleContainer>{cur_product.fileLink}</TitleContainer>
+              <EditContainer>{cur_product.createdAt} / {cur_product.userName}</EditContainer>
             </InfoContainer>
           </BoardContentContainer>
         </BoardContainer>
