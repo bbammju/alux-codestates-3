@@ -4,6 +4,7 @@ import Detail from "../pages/Detail";
 import Auth from "../routes/Auth";
 import Header from "./Header";
 import PostItem from "./PostItem";
+import BoardPost from '../components/BoardPost'
 
 const AppRouter = ({ isLoggedIn }) => {
 	return (
@@ -14,6 +15,7 @@ const AppRouter = ({ isLoggedIn }) => {
 					<>
 						<Route path="/" element={<Main />} />
 						<Route path="/detail" element={<Detail />} />
+						<Route path="/detail/post" element={<BoardPost />} />
 						<Route path="/post" element={<PostItem />} />
 					</>
 				) : (
