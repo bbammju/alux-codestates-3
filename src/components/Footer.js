@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/Logo1.png';
 
 const FooterContainer = styled.footer`
-  position: absolute;
   display: flex;
   justify-content: space-around;
   height: 150px;
