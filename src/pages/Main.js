@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ChannelTalk from '../components/ChannelTalk';
 import { getDocs, collection } from 'firebase/firestore';
 import { dbService } from '../util/fbase';
-import { useEffect } from 'react';
+import { useStore } from '../store/zustand';
 import styled from 'styled-components';
 import Item from '../components/Item';
 import Footer from '../components/Footer';
 
 function Main() {
   const [dbProductsData, setProductsData] = useState([]);
+  const { cur_product, setting } = useStore();
 
   const getData = async () => {
     const dbData = await getDocs(collection(dbService, 'products'));

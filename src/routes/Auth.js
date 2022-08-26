@@ -63,7 +63,56 @@ const Input = styled.input`
     outline: none;
   }
 `;
+const Pointer = styled.div`
+  cursor: pointer;
+`;
+const Google = styled.div`
+  text-align: center;
+  margin-top: 20px;
+  .loginBtn {
+    box-sizing: border-box;
+    position: relative;
+    margin: 0.2em;
+    padding: 0 15px 0 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    border-radius: 0.2em;
+    font-size: 16px;
+    color: #fff;
+  }
+  .loginBtn:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 100%;
+  }
+  .loginBtn:focus {
+    outline: none;
+  }
+  .loginBtn:active {
+    box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+  }
 
+  /* Google */
+  .loginBtn--google {
+    background: #dd4b39;
+  }
+  .loginBtn--google:before {
+    border-right: #bb3f30 1px solid;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png')
+      6px 6px no-repeat;
+  }
+  .loginBtn--google:hover,
+  .loginBtn--google:focus {
+    background: #e74b37;
+    cursor: pointer;
+  }
+`;
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -114,7 +163,8 @@ const Auth = () => {
           src={PostLogo}
           style={{ width: 420, height: 300, objectFit: 'cover' }}
           alt='새로고침'
-        />
+        ></img>
+
         <form onSubmit={onSubmit}>
           <InputForm>
             <InputBox>
@@ -147,14 +197,18 @@ const Auth = () => {
           </CreateBox>
         </form>
         {error}
-        <div onClick={toggleAccount}>
+        <Pointer onClick={toggleAccount}>
           {newAccount ? '계정이 이미 있으신가요?' : '가입하기'}
-        </div>
-        <div>
-          <button name='google' onClick={onSocialLogin}>
+        </Pointer>
+        <Google>
+          <button
+            className='loginBtn loginBtn--google'
+            name='google'
+            onClick={onSocialLogin}
+          >
             Continue with Google
           </button>
-        </div>
+        </Google>
       </Div>
     </SignUpForm>
   );

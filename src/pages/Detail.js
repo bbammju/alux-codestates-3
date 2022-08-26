@@ -1,58 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import samplelogo from '../assets/samplelogo.jpg';
-// import { db } from '../firebase';
+import { useStore } from '../store/zustand'
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
-  // const getDoc = async (colId, docId) => {
-  // 	try {
-  // 		const doc = await db.collection(colId).doc(docId).get();
-  // 		if (doc.exists) {
-  // 			console.log(doc.data());
-  // 		} else {
-  // 			console.log("해당 document 없음!");
-  // 		}
-  // 		console.log("get : good!");
-  // 	} catch (e) {
-  // 		alert("get : err!");
-  // 	}
-  // };
-  // useEffect(() => {
-  // 	getDoc();
-  // });
+  const {cur_product, setting} = useStore()
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/detail/post')
+}
   return (
     <>
-      {/* <Header /> */}
       <Container>
-        <ProductContainer>
-          <ProductLogo src={samplelogo} />
-          <ProductTIcontainer>
-            <ProductTitle>df</ProductTitle>
-            <ProductInfo>sdf</ProductInfo>
-          </ProductTIcontainer>
-        </ProductContainer>
-
         <BoardContainer>
           <BoardContentContainer>
             <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
-            </InfoContainer>
-            <InfoContainer>
-              <TitleContainer>markcoding-link-1.0.1 Setup.exe</TitleContainer>
-              <EditContainer>4월 27일 정임도</EditContainer>
+              <TitleContainer>{cur_product.fileLink}</TitleContainer>
+              <EditContainer>{cur_product.createdAt} / {cur_product.userName}</EditContainer>
             </InfoContainer>
           </BoardContentContainer>
         </BoardContainer>
+        <AddButton onClick={handleClick}>AddButton</AddButton>
+        <EditButton>EditButton</EditButton>
       </Container>
     </>
   );
@@ -114,34 +83,20 @@ const EditContainer = styled.div`
   font-size: 2rem;
 `;
 
-const ProductContainer = styled.div`
-  height: 20vh;
-  width: 95vw;
+const AddButton = styled.button`
+  height: 3vh;
+  width: 7vw;
   display: flex;
-`;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+`
 
-const ProductTIcontainer = styled.div`
-  height: 20vh;
-  width: 40vw;
+const EditButton = styled.button`
+  height: 3vh;
+  width: 7vw;
   display: flex;
-  flex-direction: column;
-  padding-left: 3vw;
-`;
-const ProductLogo = styled.img`
-  height: 20vh;
-  width: 12vw;
-  display: flex;
-`;
-
-const ProductTitle = styled.div`
-  height: 20vh;
-  width: 10vw;
-  display: flex;
-  font-size: 2rem;
-`;
-
-const ProductInfo = styled.div`
-  height: 20vh;
-  width: 10vw;
-  display: flex;
-`;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+`
