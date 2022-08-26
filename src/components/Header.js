@@ -1,7 +1,8 @@
-import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../assets/Logo1.png';
 import { authService } from '../util/fbase';
+import styled from 'styled-components';
+import Logo from '../assets/Logo1.png';
+import ImageUpload from './ImageUpload';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -87,6 +88,10 @@ const Header = ({ isLoggedIn }) => {
             </Link>
           </div>
           <ul className='navbar_menu'>
+            {/** image upload */}
+            <li className='navlist'>
+              <StyledLink to='/upload'>ImageUpload</StyledLink>
+            </li>
             {/* 관리자모드에서 노출 */}
             <li className='navlist'>
               <StyledLink to='/post'>
